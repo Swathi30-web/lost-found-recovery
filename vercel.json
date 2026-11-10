@@ -1,13 +1,13 @@
 {
   "functions": {
-    "api/index.cjs": {
+    "api/index.js": {
       "includeFiles": "db.seed.json"
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index.cjs"
+      "destination": "/api/index.js"
     },
     {
       "source": "/((?!api/).*)",

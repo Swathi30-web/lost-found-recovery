@@ -11,15 +11,11 @@ if (!fs.existsSync(DB_PATH)) {
 
 const server = jsonServer.create();
 
-server.use(
-  jsonServer.defaults({
-    logger: false,
-  })
-);
+server.use(jsonServer.defaults({ logger: false }));
 
 server.use(
   jsonServer.rewriter({
-    '/api/*': '/$1',
+    '/api/*': '/$1'
   })
 );
 
