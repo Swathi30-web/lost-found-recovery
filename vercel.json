@@ -1,7 +1,17 @@
 {
-  "functions": { "api/index.cjs": { "includeFiles": "db.seed.json" } },
+  "functions": {
+    "api/index.cjs": {
+      "includeFiles": "db.seed.json"
+    }
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.cjs" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.cjs"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
   ]
 }
