@@ -1,0 +1,64 @@
+{
+  "users": [
+    { "id": 1, "name": "Admin Ravi", "email": "admin@lf.com", "password": "admin123", "role": "admin", "active": true },
+    { "id": 2, "name": "Priya (Staff)", "email": "staff@lf.com", "password": "staff123", "role": "staff", "active": true },
+    { "id": 3, "name": "Arun Kumar", "email": "user@lf.com", "password": "user123", "role": "user", "active": true },
+    { "id": 4, "name": "Meena Devi", "email": "meena@lf.com", "password": "user123", "role": "user", "active": true }
+  ],
+  "categories": [
+    { "id": 1, "name": "Electronics" }, { "id": 2, "name": "Wallets & Bags" }, { "id": 3, "name": "Keys" },
+    { "id": 4, "name": "Documents" }, { "id": 5, "name": "Clothing" }, { "id": 6, "name": "Jewellery" }, { "id": 7, "name": "Other" }
+  ],
+  "lostReports": [
+    { "id": 1, "userId": 3, "itemName": "Black Samsung Galaxy phone", "categoryId": 1, "description": "Black Samsung phone with a cracked blue case", "lastSeenLocation": "Chennai Central Station", "lastSeenDate": "2026-10-28", "identifyingDetails": "Blue cover, lock screen shows a dog photo", "contactPreference": "Phone", "image": "", "status": "Matched", "createdAt": "2026-10-28T10:00:00.000Z" },
+    { "id": 2, "userId": 3, "itemName": "Brown leather wallet", "categoryId": 2, "description": "Brown leather wallet with cards inside", "lastSeenLocation": "T. Nagar Bus Stand", "lastSeenDate": "2026-10-30", "identifyingDetails": "Contains Aadhaar card and a Canara Bank debit card", "contactPreference": "Email", "image": "", "status": "Open", "createdAt": "2026-10-30T15:20:00.000Z" },
+    { "id": 3, "userId": 4, "itemName": "House keys with red keychain", "categoryId": 3, "description": "Three keys on a red keychain", "lastSeenLocation": "Anna University Library", "lastSeenDate": "2026-10-29", "identifyingDetails": "Red keychain with a small bell", "contactPreference": "In-app", "image": "", "status": "Open", "createdAt": "2026-10-29T12:00:00.000Z" },
+    { "id": 4, "userId": 4, "itemName": "Silver bracelet", "categoryId": 6, "description": "Thin silver bracelet with a heart charm", "lastSeenLocation": "Marina Beach", "lastSeenDate": "2026-10-25", "identifyingDetails": "Heart charm engraved with letter M", "contactPreference": "Email", "image": "", "status": "Open", "createdAt": "2026-10-25T18:30:00.000Z" },
+    { "id": 5, "userId": 4, "itemName": "Blue backpack", "categoryId": 2, "description": "Navy blue backpack with laptop compartment", "lastSeenLocation": "Chennai Central Station", "lastSeenDate": "2026-10-19", "identifyingDetails": "Keychain of a small elephant on the zip", "contactPreference": "Email", "image": "", "status": "Resolved", "createdAt": "2026-10-19T09:00:00.000Z" }
+  ],
+  "foundItems": [
+    { "id": 1, "reporterId": 2, "itemName": "Samsung phone with blue case", "categoryId": 1, "description": "Black Samsung phone found on a platform bench", "foundLocation": "Chennai Central Station", "foundDate": "2026-10-28", "storageLocation": "Station Lost Property Office, Shelf A2", "image": "", "status": "Claim Pending", "createdAt": "2026-10-28T14:00:00.000Z" },
+    { "id": 2, "reporterId": 2, "itemName": "Brown wallet", "categoryId": 2, "description": "Leather wallet with several cards, found near the bus stand", "foundLocation": "T. Nagar Bus Stand", "foundDate": "2026-10-31", "storageLocation": "Help Desk Locker 4", "image": "", "status": "Claim Pending", "createdAt": "2026-10-31T09:30:00.000Z" },
+    { "id": 3, "reporterId": 2, "itemName": "Set of keys with red keychain", "categoryId": 3, "description": "Three keys on a red keychain with a bell", "foundLocation": "Anna University Library", "foundDate": "2026-10-30", "storageLocation": "Library Front Desk", "image": "", "status": "Claim Pending", "createdAt": "2026-10-30T16:45:00.000Z" },
+    { "id": 4, "reporterId": 2, "itemName": "Grey hoodie", "categoryId": 5, "description": "Grey hoodie, size M, left on a bench", "foundLocation": "Marina Beach", "foundDate": "2026-10-27", "storageLocation": "Help Desk Rack 2", "image": "", "status": "In Storage", "createdAt": "2026-10-27T19:00:00.000Z" },
+    { "id": 5, "reporterId": 2, "itemName": "Blue backpack", "categoryId": 2, "description": "Navy blue backpack with an elephant keychain", "foundLocation": "Chennai Central Station", "foundDate": "2026-10-20", "storageLocation": "Station Lost Property Office", "image": "", "status": "Closed", "createdAt": "2026-10-20T08:00:00.000Z" }
+  ],
+  "matchSuggestions": [
+    { "id": 1, "lostId": 1, "foundId": 1, "score": 100, "status": "Confirmed", "decidedBy": 2, "createdAt": "2026-10-28T14:05:00.000Z" },
+    { "id": 2, "lostId": 2, "foundId": 2, "score": 100, "status": "Suggested", "decidedBy": null, "createdAt": "2026-10-31T09:35:00.000Z" },
+    { "id": 3, "lostId": 3, "foundId": 3, "score": 100, "status": "Suggested", "decidedBy": null, "createdAt": "2026-10-30T16:50:00.000Z" }
+  ],
+  "claims": [
+    { "id": 1, "foundId": 1, "lostId": 1, "userId": 3, "identifyingDetails": "Blue cover, dog photo on lock screen, IMEI ends with 4821", "proofNotes": "Purchase invoice available; can show the phone unlock pattern.", "status": "Approved", "infoRequest": "", "createdAt": "2026-10-29T09:00:00.000Z", "updatedAt": "2026-10-30T11:00:00.000Z" },
+    { "id": 2, "foundId": 2, "lostId": 2, "userId": 3, "identifyingDetails": "Brown leather wallet with Aadhaar card and Canara Bank card", "proofNotes": "My photo is on the Aadhaar card.", "status": "More Information Required", "infoRequest": "Please share the last 4 digits of the bank card.", "createdAt": "2026-11-01T10:00:00.000Z", "updatedAt": "2026-11-01T12:00:00.000Z" },
+    { "id": 3, "foundId": 3, "lostId": 3, "userId": 4, "identifyingDetails": "Three keys, red keychain with a small bell", "proofNotes": "One key is for a Godrej lock, stamped with 'M-12'.", "status": "Submitted", "infoRequest": "", "createdAt": "2026-11-01T17:00:00.000Z", "updatedAt": "2026-11-01T17:00:00.000Z" },
+    { "id": 4, "foundId": 5, "lostId": 5, "userId": 4, "identifyingDetails": "Navy backpack, elephant keychain on zip", "proofNotes": "Laptop sticker inside the front pocket.", "status": "Approved", "infoRequest": "", "createdAt": "2026-10-21T10:00:00.000Z", "updatedAt": "2026-10-22T10:00:00.000Z" }
+  ],
+  "verifications": [
+    { "id": 1, "claimId": 1, "verifierId": 2, "status": "Under Review", "note": "Reviewing proof.", "createdAt": "2026-10-29T12:00:00.000Z" },
+    { "id": 2, "claimId": 1, "verifierId": 2, "status": "Approved", "note": "IMEI and lock screen verified.", "createdAt": "2026-10-30T11:00:00.000Z" },
+    { "id": 3, "claimId": 2, "verifierId": 2, "status": "More Information Required", "note": "Please share the last 4 digits of the bank card.", "createdAt": "2026-11-01T12:00:00.000Z" },
+    { "id": 4, "claimId": 4, "verifierId": 2, "status": "Approved", "note": "Sticker matched.", "createdAt": "2026-10-22T10:00:00.000Z" }
+  ],
+  "handovers": [
+    { "id": 1, "claimId": 1, "foundId": 1, "userId": 3, "status": "Ready for Handover", "verifierId": null, "handoverDate": null, "note": "", "createdAt": "2026-10-30T11:00:00.000Z" },
+    { "id": 2, "claimId": 4, "foundId": 5, "userId": 4, "status": "Closed", "verifierId": 2, "handoverDate": "2026-10-24", "note": "Collected in person with ID.", "createdAt": "2026-10-22T10:00:00.000Z" }
+  ],
+  "notifications": [
+    { "id": 1, "userId": 3, "type": "handover", "message": "Your claim for \"Samsung phone with blue case\" is approved. It is ready for handover.", "link": "/claims", "read": false, "createdAt": "2026-10-30T11:00:00.000Z" },
+    { "id": 2, "userId": 3, "type": "info", "message": "Staff needs more information for your wallet claim: share the last 4 digits of the bank card.", "link": "/claims", "read": false, "createdAt": "2026-11-01T12:00:00.000Z" },
+    { "id": 3, "userId": 3, "type": "match", "message": "Possible match for \"Brown leather wallet\": found item \"Brown wallet\" (100%).", "link": "/lost/2", "read": false, "createdAt": "2026-10-31T09:35:00.000Z" },
+    { "id": 4, "userId": 4, "type": "match", "message": "Possible match for \"House keys with red keychain\": found item \"Set of keys with red keychain\" (100%).", "link": "/lost/3", "read": true, "createdAt": "2026-10-30T16:50:00.000Z" },
+    { "id": 5, "userId": 2, "type": "claim", "message": "New claim submitted for \"Set of keys with red keychain\".", "link": "/queue", "read": false, "createdAt": "2026-11-01T17:00:00.000Z" }
+  ],
+  "activityLogs": [
+    { "id": 1, "entityType": "lost", "entityId": 1, "action": "Report created", "actorId": 3, "note": "", "createdAt": "2026-10-28T10:00:00.000Z" },
+    { "id": 2, "entityType": "found", "entityId": 1, "action": "Found item registered", "actorId": 2, "note": "", "createdAt": "2026-10-28T14:00:00.000Z" },
+    { "id": 3, "entityType": "lost", "entityId": 1, "action": "Match confirmed", "actorId": 2, "note": "Matched with found item #1", "createdAt": "2026-10-28T14:10:00.000Z" },
+    { "id": 4, "entityType": "found", "entityId": 1, "action": "Match confirmed", "actorId": 2, "note": "Matched with lost report #1", "createdAt": "2026-10-28T14:10:00.000Z" },
+    { "id": 5, "entityType": "claim", "entityId": 1, "action": "Claim submitted", "actorId": 3, "note": "", "createdAt": "2026-10-29T09:00:00.000Z" },
+    { "id": 6, "entityType": "claim", "entityId": 1, "action": "Status: Approved", "actorId": 2, "note": "IMEI and lock screen verified.", "createdAt": "2026-10-30T11:00:00.000Z" },
+    { "id": 7, "entityType": "handover", "entityId": 1, "action": "Ready for Handover", "actorId": 2, "note": "", "createdAt": "2026-10-30T11:00:00.000Z" },
+    { "id": 8, "entityType": "claim", "entityId": 2, "action": "Status: More Information Required", "actorId": 2, "note": "Please share the last 4 digits of the bank card.", "createdAt": "2026-11-01T12:00:00.000Z" }
+  ]
+}
