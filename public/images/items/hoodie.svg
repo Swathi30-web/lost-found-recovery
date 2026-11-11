@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300" role="img" aria-label="Grey hoodie with a front pocket and drawstrings">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f5f9"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#a5b4fc" stop-opacity=".45"/><stop offset="1" stop-color="#a5b4fc" stop-opacity="0"/></radialGradient>
+    <linearGradient id="grey" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b6bcc6"/><stop offset="1" stop-color="#8a919d"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b828e"/><stop offset="1" stop-color="#5f6671"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#0f172a" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="600" height="300" fill="url(#bg)"/>
+  <circle cx="300" cy="150" r="150" fill="url(#glow)"/>
+  <ellipse cx="300" cy="268" rx="125" ry="8" fill="#0f172a" opacity=".12"/>
+  <g filter="url(#sh)">
+    <!-- sleeves -->
+    <path d="M246 98 L196 108 L150 214 Q146 222 154 226 L186 240 Q194 243 198 235 L240 160 Z" fill="url(#grey)"/>
+    <path d="M354 98 L404 108 L450 214 Q454 222 446 226 L414 240 Q406 243 402 235 L360 160 Z" fill="url(#grey)"/>
+    <!-- cuffs -->
+    <path d="M152 218 L190 236 L184 248 L146 230 Z" fill="url(#dark)" transform="translate(2 -1)"/>
+    <path d="M448 218 L410 236 L416 248 L454 230 Z" fill="url(#dark)" transform="translate(-2 -1)"/>
+    <!-- body -->
+    <path d="M236 96 Q300 132 364 96 L372 160 V244 H228 V160 Z" fill="url(#grey)"/>
+    <!-- hem -->
+    <rect x="228" y="236" width="144" height="16" rx="3" fill="url(#dark)"/>
+    <path d="M238 238 V250 M250 238 V250 M262 238 V250 M274 238 V250 M286 238 V250 M298 238 V250 M310 238 V250 M322 238 V250 M334 238 V250 M346 238 V250 M358 238 V250" stroke="#4b5563" stroke-width="1" opacity=".4"/>
+    <!-- hood -->
+    <path d="M240 98 Q236 52 300 46 Q364 52 360 98 Q330 124 300 124 Q270 124 240 98 Z" fill="url(#grey)"/>
+    <path d="M262 98 Q262 66 300 62 Q338 66 338 98 Q320 114 300 114 Q280 114 262 98 Z" fill="#555c68"/>
+    <path d="M262 98 Q262 66 300 62" fill="none" stroke="#ffffff" stroke-width="1.4" opacity=".25"/>
+    <!-- drawstrings -->
+    <path d="M288 116 Q285 140 286 166" fill="none" stroke="#f1f5f9" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M312 116 Q315 140 314 166" fill="none" stroke="#f1f5f9" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="286" cy="170" r="3.6" fill="#e2e8f0" stroke="#94a3b8"/><circle cx="314" cy="170" r="3.6" fill="#e2e8f0" stroke="#94a3b8"/>
+    <!-- kangaroo pocket -->
+    <path d="M250 186 H350 L362 234 H238 Z" fill="url(#dark)" opacity=".9"/>
+    <path d="M250 186 H350 L362 234 H238 Z" fill="none" stroke="#4b5563" stroke-width="1.2" opacity=".45"/>
+    <path d="M300 186 V234" stroke="#4b5563" stroke-width="1" opacity=".35"/>
+    <path d="M254 192 H346" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 3" opacity=".6"/>
+  </g>
+  <!-- fabric sheen -->
+  <path d="M248 100 Q268 130 262 240 H232 V160 Z" fill="#fff" opacity=".08"/>
+</svg>

@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { useAuth } from '../auth';
-import { Badge, btnGhost, btnOk, btnPrimary, card, Empty, ErrorBox, Field, Flash, History, inp, PageHeader, Spinner } from '../components/ui';
+import { Badge, btnGhost, btnOk, btnPrimary, card, catIcon, Empty, ErrorBox, Field, Flash, History, inp, ItemImage, PageHeader, Spinner } from '../components/ui';
 import { closeHandover, completeHandover, errMsg, fmt, get, today, useFetch } from '../lib';
-import { HANDOVER_STATUSES, type Claim, type FoundItem, type Handover, type User } from '../types';
+import { HANDOVER_STATUSES, type Category, type Claim, type FoundItem, type Handover, type User } from '../types';
 
 export default function Handovers() {
   const { user } = useAuth();
   const [status, setStatus] = useState(''); const [sort, setSort] = useState('newest');
   const [ok, setOk] = useState(''); const [err, setErr] = useState('');
   const q = useFetch(async () => {
-    const [h, found, users, claims] = await Promise.all([get<Handover[]>('/handovers'), get<FoundItem[]>('/foundItems'), get<User[]>('/users'), get<Claim[]>('/claims')]);
-    return { h, found, users, claims };
+    const [h, found, users, claims, cats] = await Promise.all([get<Handover[]>('/handovers'), get<FoundItem[]>('/foundItems'), get<User[]>('/users'), get<Claim[]>('/claims'), get<Category[]>('/categories')]);
+    return { h, found, users, claims, cats };
   });
   if (q.loading) return <Spinner />;
   if (q.error || !q.data) return <ErrorBox msg={q.error} onRetry={q.reload} />;
-  const { found, users } = q.data;
+  const { found, users, cats } = q.data;
   const rows = q.data.h.filter((h) => !status || h.status === status).sort((a, b) => (sort === 'newest' ? -1 : 1) * a.createdAt.localeCompare(b.createdAt));
   const verifiers = users.filter((u) => u.role !== 'user');
   const done = (m: string) => { setOk(m); setErr(''); q.reload(); };
@@ -29,14 +29,14 @@ export default function Handovers() {
       <div className="mb-3"><Flash ok={ok} err={err} /></div>
       {!rows.length ? <Empty text="No handovers found. Approve a claim to create one." /> : (
         <div className="space-y-4">
-          {rows.map((h) => <HandoverCard key={h.id} h={h} item={found.find((f) => f.id === h.foundId)} claimant={users.find((u) => u.id === h.userId)?.name} verifier={users.find((u) => u.id === h.verifierId)?.name} verifiers={verifiers} me={user!} onDone={done} onErr={setErr} />)}
+          {rows.map((h) => <HandoverCard key={h.id} h={h} item={found.find((f) => f.id === h.foundId)} icon={catIcon(cats.find((c) => c.id === found.find((f) => f.id === h.foundId)?.categoryId)?.name)} claimant={users.find((u) => u.id === h.userId)?.name} verifier={users.find((u) => u.id === h.verifierId)?.name} verifiers={verifiers} me={user!} onDone={done} onErr={setErr} />)}
         </div>
       )}
     </>
   );
 }
 
-function HandoverCard({ h, item, claimant, verifier, verifiers, me, onDone, onErr }: { h: Handover; item?: FoundItem; claimant?: string; verifier?: string; verifiers: User[]; me: User; onDone: (m: string) => void; onErr: (m: string) => void }) {
+function HandoverCard({ h, item, icon, claimant, verifier, verifiers, me, onDone, onErr }: { h: Handover; item?: FoundItem; icon: string; claimant?: string; verifier?: string; verifiers: User[]; me: User; onDone: (m: string) => void; onErr: (m: string) => void }) {
   const [form, setForm] = useState(false); const [busy, setBusy] = useState(false);
   const [date, setDate] = useState(today()); const [vid, setVid] = useState(String(me.id)); const [note, setNote] = useState(''); const [fe, setFe] = useState('');
   const [hist, setHist] = useState(false);
@@ -51,8 +51,11 @@ function HandoverCard({ h, item, claimant, verifier, verifiers, me, onDone, onEr
   return (
     <div className={card}>
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <div><h3 className="font-semibold">{item?.itemName ?? 'Item'} <span className="text-sm font-normal text-slate-500">· Claim #{h.claimId}</span></h3>
-          <p className="text-sm text-slate-600">Claimant: {claimant} · Storage: {item?.storageLocation}</p></div>
+        <div className="flex min-w-0 items-start gap-3">
+          <ItemImage src={item?.image} alt={item?.itemName ?? 'Item'} icon={icon} iconClass="text-2xl" className="h-16 w-16 shrink-0 rounded-lg border border-slate-200 object-cover" />
+          <div><h3 className="font-semibold">{item?.itemName ?? 'Item'} <span className="text-sm font-normal text-slate-500">· Claim #{h.claimId}</span></h3>
+            <p className="text-sm text-slate-600">Claimant: {claimant} · Storage: {item?.storageLocation}</p></div>
+        </div>
         <Badge s={h.status} />
       </div>
       {h.status !== 'Ready for Handover' && <p className="mt-2 text-sm text-slate-600">Handover date: <b>{fmt(h.handoverDate)}</b> · Verified by: <b>{verifier ?? '—'}</b>{h.note && <> · Note: {h.note}</>}</p>}

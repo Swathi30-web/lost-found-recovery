@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { get, useFetch, fmt, type Filters, emptyFilters } from '../lib';
 import type { Activity, Category, User } from '../types';
@@ -55,6 +55,27 @@ export const Stat = ({ label, value, tone = 'indigo' }: { label: string; value: 
     <div className="text-xs uppercase tracking-wide text-slate-500">{label}</div><div className="mt-1 text-3xl font-bold text-slate-900">{value}</div>
   </div>
 );
+
+/** Emoji shown when an item has no photo (or its photo fails to load), chosen by category name. */
+const CAT_ICONS: Record<string, string> = {
+  Electronics: '📱', 'Wallets & Bags': '👜', Keys: '🔑', Documents: '📄', Clothing: '👕', Jewellery: '💍', Other: '📦',
+};
+export const catIcon = (categoryName?: string) => CAT_ICONS[categoryName ?? ''] ?? '📦';
+
+/**
+ * Item photo with a graceful fallback. Pass the sizing / shape classes in `className`
+ * (e.g. "h-40 w-full rounded-lg object-cover"); the fallback tile reuses the same box.
+ */
+export function ItemImage({ src, alt, icon = '📦', className = '', iconClass = 'text-4xl' }: { src?: string; alt: string; icon?: string; className?: string; iconClass?: string }) {
+  const [broken, setBroken] = useState(false);
+  useEffect(() => setBroken(false), [src]);
+  if (src && !broken) return <img src={src} alt={alt} loading="lazy" onError={() => setBroken(true)} className={className} />;
+  return (
+    <div role="img" aria-label={`${alt} (no photo)`} className={`flex items-center justify-center bg-slate-100 ${className}`}>
+      <span aria-hidden="true" className={iconClass}>{icon}</span>
+    </div>
+  );
+}
 
 export function ImageInput({ value, onChange, error }: { value: string; onChange: (v: string) => void; error?: string }) {
   const [err, setErr] = useState('');

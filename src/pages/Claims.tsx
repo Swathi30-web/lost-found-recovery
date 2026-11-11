@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../auth';
-import { Badge, btnDanger, btnGhost, btnOk, btnPrimary, card, Empty, ErrorBox, Flash, History, inp, ItemLink, PageHeader, Spinner } from '../components/ui';
+import { Badge, btnDanger, btnGhost, btnOk, btnPrimary, card, catIcon, Empty, ErrorBox, Flash, History, inp, ItemImage, ItemLink, PageHeader, Spinner } from '../components/ui';
 import { emptyFilters, errMsg, fmt, get, respondToInfoRequest, reviewClaim, useFetch, type Filters } from '../lib';
 import { CLAIM_STATUSES, type Category, type Claim, type ClaimStatus, type FoundItem, type Handover, type User } from '../types';
 
@@ -44,7 +44,7 @@ export default function Claims({ queue }: { queue?: boolean }) {
       {!rows.length ? <Empty text={q.data.claims.length ? 'No claims match your filters.' : queue ? 'No claims to review.' : 'You have not submitted any claims yet. Open a found item and click "Submit claim".'} /> : (
         <div className="space-y-4">
           {rows.map((c) => (
-            <ClaimCard key={c.id} c={c} fi={found.find((x) => x.id === c.foundId)} who={users.find((u) => u.id === c.userId)?.name} handover={hand.find((h) => h.claimId === c.id)}
+            <ClaimCard key={c.id} c={c} fi={found.find((x) => x.id === c.foundId)} icon={catIcon(cats.find((k) => k.id === found.find((x) => x.id === c.foundId)?.categoryId)?.name)} who={users.find((u) => u.id === c.userId)?.name} handover={hand.find((h) => h.claimId === c.id)}
               queue={!!queue} onDone={(m) => { setOk(m); setErr(''); q.reload(); }} onErr={(m) => { setErr(m); setOk(''); }} />
           ))}
         </div>
@@ -53,7 +53,7 @@ export default function Claims({ queue }: { queue?: boolean }) {
   );
 }
 
-function ClaimCard({ c, fi, who, handover, queue, onDone, onErr }: { c: Claim; fi?: FoundItem; who?: string; handover?: Handover; queue: boolean; onDone: (m: string) => void; onErr: (m: string) => void }) {
+function ClaimCard({ c, fi, icon, who, handover, queue, onDone, onErr }: { c: Claim; fi?: FoundItem; icon: string; who?: string; handover?: Handover; queue: boolean; onDone: (m: string) => void; onErr: (m: string) => void }) {
   const { user } = useAuth();
   const [note, setNote] = useState(''); const [reply, setReply] = useState(''); const [hist, setHist] = useState(false); const [busy, setBusy] = useState(false); const [localErr, setLocalErr] = useState('');
 
@@ -72,9 +72,12 @@ function ClaimCard({ c, fi, who, handover, queue, onDone, onErr }: { c: Claim; f
   return (
     <div className={card}>
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <div>
-          <h3 className="font-semibold">Claim #{c.id}: {fi ? <ItemLink kind="found" id={fi.id}>{fi.itemName}</ItemLink> : 'Item removed'}</h3>
-          <p className="text-xs text-slate-500">{queue && <>By {who} · </>}Submitted {fmt(c.createdAt)} · Updated {fmt(c.updatedAt)}</p>
+        <div className="flex min-w-0 items-start gap-3">
+          <ItemImage src={fi?.image} alt={fi?.itemName ?? 'Item removed'} icon={icon} iconClass="text-2xl" className="h-16 w-16 shrink-0 rounded-lg border border-slate-200 object-cover" />
+          <div>
+            <h3 className="font-semibold">Claim #{c.id}: {fi ? <ItemLink kind="found" id={fi.id}>{fi.itemName}</ItemLink> : 'Item removed'}</h3>
+            <p className="text-xs text-slate-500">{queue && <>By {who} · </>}Submitted {fmt(c.createdAt)} · Updated {fmt(c.updatedAt)}</p>
+          </div>
         </div>
         <Badge s={c.status} />
       </div>

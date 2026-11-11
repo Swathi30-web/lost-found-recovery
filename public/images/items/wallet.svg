@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300" role="img" aria-label="Brown leather wallet with cards poking out">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f5f9"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#fdba74" stop-opacity=".5"/><stop offset="1" stop-color="#fdba74" stop-opacity="0"/></radialGradient>
+    <linearGradient id="leather" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a0673a"/><stop offset="1" stop-color="#6b3f1d"/></linearGradient>
+    <linearGradient id="flap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b57a47"/><stop offset="1" stop-color="#8b5a2b"/></linearGradient>
+    <linearGradient id="card2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#1e40af"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="600" height="300" fill="url(#bg)"/>
+  <circle cx="300" cy="160" r="150" fill="url(#glow)"/>
+  <ellipse cx="300" cy="262" rx="140" ry="10" fill="#0f172a" opacity=".14"/>
+  <!-- ID card -->
+  <g transform="rotate(-7 250 110)" filter="url(#sh)">
+    <rect x="205" y="58" width="130" height="86" rx="7" fill="#fffbeb" stroke="#e5e7eb"/>
+    <rect x="205" y="58" width="130" height="14" rx="7" fill="#f97316"/><rect x="205" y="66" width="130" height="6" fill="#f97316"/>
+    <rect x="205" y="72" width="130" height="5" fill="#fff" opacity="0"/>
+    <rect x="214" y="84" width="30" height="36" rx="3" fill="#cbd5e1"/>
+    <circle cx="229" cy="97" r="7" fill="#94a3b8"/><path d="M217 118 Q229 104 241 118 Z" fill="#94a3b8"/>
+    <rect x="252" y="86" width="70" height="5" rx="2.5" fill="#94a3b8"/>
+    <rect x="252" y="97" width="56" height="5" rx="2.5" fill="#cbd5e1"/>
+    <rect x="252" y="108" width="62" height="5" rx="2.5" fill="#cbd5e1"/>
+    <rect x="214" y="128" width="100" height="6" rx="3" fill="#e2e8f0"/>
+  </g>
+  <!-- debit card -->
+  <g transform="rotate(8 360 110)" filter="url(#sh)">
+    <rect x="300" y="52" width="130" height="86" rx="8" fill="url(#card2)"/>
+    <rect x="312" y="74" width="24" height="18" rx="3.5" fill="#fcd34d"/>
+    <path d="M312 83 H336 M324 74 V92" stroke="#b45309" stroke-width=".8" opacity=".7"/>
+    <rect x="312" y="106" width="70" height="5" rx="2.5" fill="#bfdbfe" opacity=".85"/>
+    <circle cx="402" cy="122" r="8" fill="#fb7185" opacity=".9"/><circle cx="412" cy="122" r="8" fill="#fbbf24" opacity=".85"/>
+  </g>
+  <!-- wallet body -->
+  <g filter="url(#sh)">
+    <rect x="165" y="92" width="270" height="158" rx="20" fill="url(#leather)"/>
+    <path d="M165 112 Q165 92 185 92 H415 Q435 92 435 112 V150 H165 Z" fill="url(#flap)"/>
+    <path d="M165 150 H435" stroke="#5a3416" stroke-width="2" opacity=".55"/>
+    <!-- stitching -->
+    <rect x="177" y="104" width="246" height="134" rx="13" fill="none" stroke="#e8c08a" stroke-width="1.6" stroke-dasharray="6 5" opacity=".85"/>
+    <!-- clasp -->
+    <rect x="410" y="148" width="40" height="52" rx="10" fill="#5a3416"/>
+    <rect x="410" y="148" width="40" height="52" rx="10" fill="none" stroke="#e8c08a" stroke-width="1.2" stroke-dasharray="4 4" opacity=".7" transform="translate(0 0)"/>
+    <circle cx="430" cy="174" r="7" fill="#d4a24c"/><circle cx="430" cy="174" r="3" fill="#8a6420"/>
+  </g>
+  <!-- leather sheen -->
+  <path d="M185 98 H330 L290 148 H165 V112 Q165 98 185 98 Z" fill="#fff" opacity=".08"/>
+</svg>

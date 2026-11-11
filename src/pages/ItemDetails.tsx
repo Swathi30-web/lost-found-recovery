@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../auth';
 import MatchPanel from '../components/MatchPanel';
-import { Badge, btnDanger, btnGhost, btnPrimary, btnOk, card, ErrorBox, Field, Flash, History, inp, PageHeader, Spinner } from '../components/ui';
+import { Badge, btnDanger, btnGhost, btnPrimary, btnOk, card, catIcon, ErrorBox, Field, Flash, History, inp, ItemImage, PageHeader, Spinner } from '../components/ui';
 import { del, errMsg, fmt, get, logActivity, patch, submitClaim, useFetch } from '../lib';
 import { FOUND_STATUSES, LOST_STATUSES, type Category, type Claim, type LostReport, type User } from '../types';
 
@@ -50,7 +50,7 @@ export default function ItemDetails({ kind }: { kind: 'lost' | 'found' }) {
       <div className="mb-4"><Flash ok={ok} err={err} /></div>
       <div className="grid gap-4 lg:grid-cols-3">
         <div className={`${card} lg:col-span-2`}>
-          {item.image && <img src={item.image} alt={item.itemName} className="mb-4 max-h-72 rounded-lg object-cover" />}
+          <ItemImage src={item.image} alt={item.itemName} icon={catIcon(cats.find((c) => c.id === item.categoryId)?.name)} iconClass="text-6xl" className="mb-4 aspect-[2/1] w-full max-w-lg rounded-lg bg-slate-100 object-contain" />
           <dl className="grid gap-3 text-sm sm:grid-cols-2">
             <div><dt className="text-slate-500">Status</dt><dd><Badge s={item.status} /></dd></div>
             <div><dt className="text-slate-500">Category</dt><dd>{cats.find((c) => c.id === item.categoryId)?.name}</dd></div>
